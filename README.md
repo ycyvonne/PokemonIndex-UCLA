@@ -1,8 +1,8 @@
 # DBProject
 
-feature ideas:
+##feature ideas:
 
-featured pokemon carousel - https://pokeapi.co/
-pokegyms around campus - map
+- featured pokemon carousel - https://pokeapi.co/
+- pokegyms around campus - map
 
-events?
+- events?
