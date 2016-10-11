@@ -58,7 +58,7 @@ p{
 
 .ash{
 	z-index:-10;
-	left:100px;
+	left:120px;
 }
 
 .snow{
@@ -70,9 +70,30 @@ p{
 	width:100px;
 	height:100px;
 	left:1000px;
-	top:530px;
+	top:510px;
+	z-index:-5;
 }
 
 #snow1{
 	z-index:-20;
+}
+
+.pokemon{
+	height:180px;
+	width:180px;
+	left:930px;
+	top:400px;
+	z-index:0;
+	display: none;
+	opacity:0;
+}
+
+.ball:hover{
+	transition: 0.1s;
+	transition-timing-function: ease-in;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
 }
