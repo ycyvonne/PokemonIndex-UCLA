@@ -15,6 +15,10 @@ h1{
 	line-height: 90px;
 }
 
+p{
+	color: white;
+}
+
 .color{
 	color: #cc100c;
 }
@@ -24,13 +28,15 @@ h1{
 }
 
 .title_wrapper{
+	position: fixed;
 	border-bottom: 10px solid white;
 	border-top: 10px solid white;
 	padding-top:20px;
-	position: fixed;
-	left:-5000px;
 	top:150px;
 	z-index:-12;
+	left: 100px;
+	top: 300px;
+	opacity: 0;
 }
 
 .main_image{
@@ -57,13 +63,14 @@ h1{
 
 .snow{
 	z-index: -5;
+	left:100px;
 }
 
 .ball{
 	width:100px;
 	height:100px;
 	left:1000px;
-	top:550px;
+	top:530px;
 }
 
 #snow1{
