@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title>Pokestops and Gyms @UCLA</title>
+  <meta charset='UTF-8' />
+  <!--<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css' />-->
+  <script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    </script>
+  <script async src="resources/knockout-3.3.0.js"></script>
+  <link rel="stylesheet" href="css/map.css">
+</head>
+<body>
+  <div class="user-inputs">
+      <form class="form">
+        <input data-bind="value: query, valueUpdate: 'keyup'" autocomplete="on" class="search-box" placeholder="Search pokestops and gyms" type="search">
+      </form>
+
+      <div class="filter-container">
+        <span data-bind="foreach: filterOptionsList" class="filter">
+          <button data-bind="click: function(data, event) {$parent.setUpCategoryFilter(name, data, event);}" class="filter-item">
+            <span data-bind="text: name"></span>
+            <span><img data-bind="attr: {src: $data.image}" class="filter-img"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div id="map-canvas"></div>
+
+    <div data-bind="click: showList" class="show-locations">&#x2261;</div>
+
+    <div class="list-container">
+      <ul data-bind="foreach: locationsList" class="list">
+        <li data-bind="text: name, click: $parent.makeListClickable.bind($data, $index), attr: {id: $index}" class="list-item"></li>
+      </ul>
+    </div>
+
+    <script src="js/map.js"></script>
+
+    <script>
+
+      function initialize() {
+        map();
+      }
+
+      function loadScript() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBo5PO8DIjY-j-2UbddSuDcKGV2d4XVx9g&callback=initialize';
+        document.body.appendChild(script);
+      }
+
+      window.onload = loadScript;
+
+    </script>
+  <!-- Put your HTML here! -->
+</body>
+</html>
