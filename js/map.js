@@ -9,7 +9,7 @@ function map() {
 	var Model = {
 		// options to set up our google map
 		mapOptions: {
-			center: {lat: 34.069952, lng: -118.445288},
+			center: {lat: 34.068561, lng: -118.448936},
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.TERRAIN,
 			mapTypeControlOptions: {
@@ -26,31 +26,22 @@ function map() {
 		// our basic location array
 		locations: [
 			{
-				name: 'UCHA housing co-op',
-				type: 'stop',
-				description: 'this is a pokestop',
+				name: 'Sunset Rec',
+				type: 'gym',
 				coordinates: {
-					lat: 34.068852,
-					lng: -118.450761
+					lat: 34.075471,
+					lng: -118.451222
 				}
 			},
 			{
 				name: 'Powell Library',
 				type: 'gym',
-				description: 'this is a gym',
 				coordinates: {
 					lat: 34.072108,
 					lng: -118.442026
 				}
 			}
 		],
-
-		// info to make our ajax request to four square
-		fourSquareInfo: {
-			clientID: 'AQCNP0VHT3VAKMLMIUH2OQHNP2XHXOWYFSYEJNJ0RSKR1JHA',
-			clientSecret: 'VGTBLMPURRGIG4NSSIATQTTEUWKSWPWVKOHNDCECXCDVCEJB',
-			version: 20130815
-		},
 
 		// programmatically set the icon color which goes
 		// with the right location type
@@ -65,11 +56,7 @@ function map() {
 
 				// colors according to filterOptions array below
 				if (locationType === 'gym')
-					color = 'red';
-				else if (locationType === 'stop')
-					color = 'blue';
-
-				location.icon = 'resources/' + color + '-dot.png';
+					location.icon = 'resources/gym.png'
 			}
 		},
 
@@ -77,27 +64,11 @@ function map() {
 
 		// sets the info window content
 		makeInfoWindow: function(i, markerCopy) {
-			Model.infoWindowContent = Model.locations[i].description;
+			Model.infoWindowContent = Model.locations[i].name;
 			// once done constructing info window content,
 			// call on VM to set info window to right marker
 			myViewModel.setUpInfoWindow(markerCopy);
-		},
-
-		// categories to filter the locations
-		filterOptions: [
-			{
-				name: 'all',
-				image: null
-			},
-			{
-				name: 'gym',
-				image: 'resources/red-dot.png'
-			},
-			{
-				name: 'stop',
-				image: 'resources/blue-dot.png'
-			}
-		]
+		}
 	};
 
 
@@ -109,12 +80,6 @@ function map() {
 		Model.setLocationIcon();
 		// listen to the search box for changes
 		self.query = ko.observable('');
-
-		// put show options in VM to construct it in DOM using KO
-		self.filterOptionsList = [];
-		Model.filterOptions.forEach(function(element) {
-			self.filterOptionsList.push(element);
-		});
 
 		// put locations in VM to construct listview in DOM using KO
 		self.locationsList = [];
@@ -170,13 +135,13 @@ function map() {
 
 		self.hideList = function() {
 			if ($(window).width() < 750) {
-				$('.list-container').hide();
+				$('.list-container').css('left', '-400px');
 				$('.show-locations').show();
 			}
 		};
 
 		self.showList = function() {
-			$('.list-container').show();
+			$('.list-container').css('left', '0');
 			$('.show-locations').hide();
 		};
 
@@ -209,35 +174,6 @@ function map() {
 		// if changes in the search box, call the search function
 		self.query.subscribe(self.search);
 
-		// name is the category clicked by the user
-		self.setUpCategoryFilter = function(name) {
-			var i, result;
-
-			// reset everything
-			self.infoWindow.close();
-			// first show all markers and list items on screen
-			self.markersList.forEach(function(element) {
-				element.setAnimation(null);
-				element.setMap(self.map);
-			});
-			$('.list-item').show();
-
-			// if the user clicked a category instead of all
-			if (name !== 'all') {
-				for (i = 0; i < self.locationsListLength; i++) {
-					// save each location's type
-					result = self.locationsList[i].type;
-					// if the location's type does not equal the category
-					// clicked, hide its marker and list item
-					if (result !== name) {
-						self.markersList[i].setMap(null);
-
-						$('#' + i).hide();
-					}
-				}
-			}
-		};
-
 		// initialize the map
 		self.initializeMap = function() {
 			// create the map
@@ -252,7 +188,6 @@ function map() {
 			self.infoWindow = new google.maps.InfoWindow({
 				maxWidth: 300,
 			});
-			console.log(locationsLength);
 			// for loop makes markers with info windows
 			for (i = 0; i < locationsLength; i++) {
 				// make markers
