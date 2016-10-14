@@ -1,3 +1,8 @@
+@font-face{
+	font-family: "Uni Sans";
+	src: url("resources/Uni Sans Heavy.otf") format('opentype');
+}
+
 *{
 	margin: 0px;
 	padding: 0px;
@@ -28,12 +33,12 @@ p{
 }
 
 .title_wrapper{
+	z-index:-12;
 	position: fixed;
 	border-bottom: 10px solid white;
 	border-top: 10px solid white;
 	padding-top:20px;
 	top:150px;
-	z-index:-12;
 	left: 100px;
 	top: 300px;
 	opacity: 0;
@@ -45,6 +50,7 @@ p{
 }
 
 .back{
+	z-index:-15;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -53,7 +59,6 @@ p{
 	width:400px;
 	height:400px;
 	opacity: 0.5;
-	z-index:-15;
 }
 
 .ash{
@@ -67,11 +72,11 @@ p{
 }
 
 .ball{
+	z-index:-5;
 	width:100px;
 	height:100px;
 	left:1000px;
 	top:510px;
-	z-index:-5;
 }
 
 #snow1{
@@ -79,11 +84,11 @@ p{
 }
 
 .pokemon{
+	z-index:0;
 	height:180px;
 	width:180px;
 	left:930px;
 	top:400px;
-	z-index:0;
 	display: none;
 	opacity:0;
 }
