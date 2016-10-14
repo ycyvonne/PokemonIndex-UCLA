@@ -25,7 +25,10 @@
       </form>
     </div>
     <ul data-bind="foreach: locationsList" class="list">
-      <li data-bind="text: name, click: $parent.makeListClickable.bind($data, $index), attr: {id: $index}" class="list-item"></li>
+      <li data-bind="click: $parent.makeListClickable.bind($data, $index), attr: {id: $index}" class="list-item">
+        <span data-bind="text: $index() + 1"></span>.
+        <span data-bind="text: name"></span>
+      </li>
     </ul>
   </div>
 

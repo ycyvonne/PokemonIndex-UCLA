@@ -40,6 +40,14 @@ function map() {
 					lat: 34.072108,
 					lng: -118.442026
 				}
+			},
+			{
+				name: 'John Wooden statue',
+				type: 'gym',
+				coordinates: {
+					lat: 34.071032,
+					lng: -118.446511
+				}
 			}
 		],
 
