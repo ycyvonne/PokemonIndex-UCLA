@@ -2,7 +2,6 @@
 
 ##feature ideas:
 
-- featured pokemon carousel - https://pokeapi.co/
-- pokegyms around campus - map
-
-- events?
+- parallax homepage
+- animation opens up background to reveal:
+    - pokemon gyms around campus (map)
