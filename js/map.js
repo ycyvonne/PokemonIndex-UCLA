@@ -6,7 +6,7 @@ function map() {
 
 	/* --------------------- Model Data ---------------------- */
 
-	var Model = {
+	let Model = {
 		// options to set up our google map
 		mapOptions: {
 			center: {lat: 34.068561, lng: -118.448936},
@@ -54,9 +54,9 @@ function map() {
 		// programmatically set the icon color which goes
 		// with the right location type
 		setLocationIcon: function() {
-			// define variables outside the for loop
-			var i, color, location, locationType;
-			var locationsLength = Model.locations.length;
+			// define letiables outside the for loop
+			let i, color, location, locationType;
+			let locationsLength = Model.locations.length;
 
 			for (i = 0; i < locationsLength; i++) {
 				location = Model.locations[i];
@@ -82,8 +82,8 @@ function map() {
 
 	/* --------------------- ViewModel ----------------------*/
 
-	var ViewModel = function() {
-		var self = this;
+	let ViewModel = function() {
+		let self = this;
 
 		Model.setLocationIcon();
 		// listen to the search box for changes
@@ -112,7 +112,7 @@ function map() {
 		};
 
 		self.setUpInfoWindow = function(markerCopy) {
-			var infoWindow = self.infoWindow;
+			let infoWindow = self.infoWindow;
 			// set the right content
 			infoWindow.setContent(Model.infoWindowContent);
 			// open the info window when a marker is clicked
@@ -154,8 +154,8 @@ function map() {
 		};
 
 		self.search = function() {
-			var searchValue = new RegExp(self.query(), 'i');
-			var i, result;
+			let searchValue = new RegExp(self.query(), 'i');
+			let i, result;
 
 			// reset everything
 			self.infoWindow.close();
@@ -185,13 +185,13 @@ function map() {
 		// initialize the map
 		self.initializeMap = function() {
 			// create the map
-			var mapCanvas = document.getElementById('map-canvas');
+			let mapCanvas = document.getElementById('map-canvas');
 			self.map = new google.maps.Map(mapCanvas, Model.mapOptions);
 
-			// declare variables outside of the loop
-			var locations = self.locationsList;
-			var locationsLength = locations.length;
-			var i, marker;
+			// declare letiables outside of the loop
+			let locations = self.locationsList;
+			let locationsLength = locations.length;
+			let i, marker;
 			// make one info window
 			self.infoWindow = new google.maps.InfoWindow({
 				maxWidth: 300,
@@ -216,7 +216,7 @@ function map() {
 
 		// prevent form from submitting when user presses enter key
 		$(document).on('keypress', 'form', function(e) {
-			var code = e.keyCode || e.which;
+			let code = e.keyCode || e.which;
 
 			if (code === 13) {
 				e.preventDefault();
@@ -227,7 +227,7 @@ function map() {
 	};
 
 	// allows us to reference our instance of the ViewModel
-	var myViewModel = new ViewModel();
+	let myViewModel = new ViewModel();
 
 	ko.applyBindings(myViewModel);
 }
