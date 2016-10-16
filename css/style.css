@@ -202,6 +202,10 @@ h2{
 	width: 100%;
 	-webkit-appearance: none;
 	height: 40px;
+	background-color: black;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
 }
 
 /* ------------- filter options --------------- */
@@ -256,7 +260,7 @@ h2{
 	top: 0;
 	left: -400px;
 	transition: left 0.5s ease;
-	padding: 10px;
+	padding: 15px;
 }
 
 .list {
@@ -275,12 +279,25 @@ h2{
 .list-item {
 	font-size: 1.2em;
 	line-height: 2em;
-	background-color: white;
-	color: black;
+	background-color: black;
+	color: white;
 	border-top: 1px solid black;
-	width: 97%;
+	width: 100%;
 	flex-grow: 1;
 	padding-left: 10px;
+	margin-top:10px;
+	transition: background-color 0.1s;
+	transition-timing-function: ease-in;
+}
+
+.list-item:hover{
+	cursor: pointer;
+	background-color: #cc100c;
+	color:white;
+}
+
+.list-item span{
+	text-transform: uppercase;
 }
 
 .show-locations {
